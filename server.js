@@ -3,7 +3,7 @@ const app        = express();
 const port = process.env.PORT || 8080;
 const router = express.Router();
 const mongoose = require('mongoose');
-var state = require('.app/models/state.js');
+var State = require('./app/models/state');
 
 mongoose.connect('mongodb://ds051853.mongolab.com:51853/morning_consult_db');
 
@@ -19,7 +19,7 @@ router.get('/', function(req, res) {
 // more routes for our API will happen here
 
 // REGISTER OUR ROUTES -------------------------------
-// all of our routes will be prefixed with /api
+// all of our routes will be prefixed with /myApi
 app.use('/myApi', router);
 
 app.listen(port);
