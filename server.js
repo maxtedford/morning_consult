@@ -2,10 +2,14 @@ const express    = require('express');
 const app        = express();
 const port = process.env.PORT || 8080;
 const router = express.Router();
-const mongoose = require('mongoose');
+const MongoClient = require('mongodb').MongoClient;
 var State = require('./app/models/state');
 
-mongoose.connect('mongodb://ds051853.mongolab.com:51853/morning_consult_db');
+MongoClient.connect("mongodb://localhost:27017", function(err, db) {
+  if(!err) {
+    console.log("We are connected");
+  }
+});
 
 router.use(function(req, res, next) {
   console.log('Something is happening.');
